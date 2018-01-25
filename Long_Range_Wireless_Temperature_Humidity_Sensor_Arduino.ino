@@ -60,9 +60,9 @@ void loop()
     
   if(data[22]==1)  //////// make sure the sensor type is correct
 {  
-  float humidity = ((((data[24] & 0x3F) * 256) + data[25]) * 100.0) / 16383.0;
-  float temp = ((data[26] * 256) + (data[27] & 0xFC)) / 4;
-  float cTemp = (temp / 16384.0) * 165.0 - 40.0;
+  float humidity = ((((data[24]) * 256) + data[25]) /100.0);
+  float cTemp = ((data[26] * 256) + (data[27])) /100.0;
+  float fTemp = cTemp * 1.8 + 32;
   float fTemp = cTemp * 1.8 + 32;
   float battery = ((data[18] * 256) + data[19]);
   float voltage = 0.00322 * battery;
