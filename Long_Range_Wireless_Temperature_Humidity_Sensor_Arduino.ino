@@ -2,7 +2,7 @@
 ///sensor data structure can be found here https://ncd.io/long-range-wireless-temperature-humidity-sensor/ 
 /// sesnro can be found here https://store.ncd.io/shop/
 
-  byte data[29];
+  int8_t data[29];
   int k = 10;
   int i;
 void setup()
