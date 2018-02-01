@@ -2,7 +2,7 @@
 ///sensor data structure can be found here https://ncd.io/long-range-wireless-temperature-humidity-sensor/ 
 /// sesnro can be found here https://store.ncd.io/shop/
 
-  int8_t data[29];
+  uint8_t data[29];
   int k = 10;
   int i;
 void setup()
@@ -32,7 +32,8 @@ void loop()
   if(data[22]==1)  //////// make sure the sensor type is correct
          {  
   float humidity = ((((data[24]) * 256) + data[25]) /100.0);
-  float cTemp = ((data[26] * 256) + (data[27])) /100.0;
+  int16_t cTempint = (((unit16_t)/data[26])<<8)| data[27];
+  float cTemp = (float)cTempint /100.0;
   float fTemp = cTemp * 1.8 + 32;
   float battery = ((data[18] * 256) + data[19]);
   float voltage = 0.00322 * battery;
